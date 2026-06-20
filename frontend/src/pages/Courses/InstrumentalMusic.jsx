@@ -3,7 +3,7 @@ import Container from "../../components/shared/Container";
 
 import guitar1 from "../../assets/images/home/guitar1.JPG";
 import keyboard1 from "../../assets/images/home/keyboard1.jpg";
-import tabla1 from "../../assets/images/home/tabla1.jpg";
+import tabla1 from "../../assets/images/home/tabla1.JPG";
 import harmonium1 from "../../assets/images/home/harmonium1.JPG";
 import flute from "../../assets/images/home/flute.jpg";
 import mrudungam from "../../assets/images/home/mrudungam.webp";
