@@ -1,0 +1,26 @@
+:root {
+  /* Fonts */
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* Brand Colors */
+  --primary: #F05A22;      /* Logo Orange */
+  --secondary: #F28C28;    /* Warm Orange */
+  --accent: #F4B400;       /* Golden Yellow */
+
+  /* Background Gradient (matched to logo) */
+  --background-start: #F05A22;
+  --background-middle: #F28C28;
+  --background-end: #F4B400;
+
+  /* Surfaces */
+  --surface: rgba(11, 2, 2, 0.15);
+
+  /* Text */
+  --text-primary: #1F2937;
+  --text-secondary: #374151;
+
+  /* Supporting Colors */
+  --slate: #7D8594;
+  --light-surface: #221b14;
+}
