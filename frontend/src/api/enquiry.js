@@ -12,7 +12,7 @@ export async function submitEnquiry(data) {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to submit enquiry.");
+    throw new Error(result.message);
   }
 
   return result;

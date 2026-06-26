@@ -77,27 +77,10 @@ export default function QuickEnquiry() {
 };
     
 
-    if (
-      (course === "singing" ||
-        course === "instrumental" ||
-        course === "dance") &&
-      !subCourse
-    ) {
-      alert("Please select a course specialization.");
-      return;
-    }
-
-    setShowSuccessModal(true);
-
-setName("");
-setPhone("");
-setEmail("");
-setCourse("");
-setSubCourse("");
-setCountryCode("+91");
+    
 
     // Add your API / EmailJS / backend submission here
-  };
+  
 
   return (
     <section
