@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Container from "../../components/shared/Container";
 import SectionHeading from "../../components/shared/SectionHeading";
+import { submitEnquiry } from "../../api/enquiry";
 
 export default function QuickEnquiry() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -11,19 +12,69 @@ export default function QuickEnquiry() {
   const [course, setCourse] = useState("");
   const [subCourse, setSubCourse] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!name || !phone || !email || !course) {
-      alert("Please fill all required fields.");
-      return;
-    }
+  if (!name || !phone || !email || !course) {
+    alert("Please fill all required fields.");
+    return;
+  }
 
-    if (phone.length < 6) {
-  alert("Please enter a valid phone number.");
-  return;
-}
+  if (phone.length < 6) {
+    alert("Please enter a valid phone number.");
+    return;
+  }
+
+  if (
+    (course === "singing" ||
+      course === "instrumental" ||
+      course === "dance") &&
+    !subCourse
+  ) {
+    alert("Please select a course specialization.");
+    return;
+  }
+
+  const payload = {
+    name,
+    phone: `${countryCode}${phone}`,
+    email,
+    course:
+      course === "singing"
+        ? "Vocal Music"
+        : course === "instrumental"
+        ? "Instrumental Music"
+        : "Dance",
+
+    instrument: subCourse,
+
+    description: "",
+  };
+
+  try {
+    setLoading(true);
+
+    await submitEnquiry(payload);
+
+    setShowSuccessModal(true);
+
+    setName("");
+    setPhone("");
+    setEmail("");
+    setCourse("");
+    setSubCourse("");
+    setCountryCode("+91");
+  } catch (error) {
+    alert(
+      error.message ||
+      "Unable to submit enquiry."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
     
 
     if (
@@ -247,6 +298,7 @@ disabled:opacity-50
                 <button
                   type="submit"
                   disabled={
+                    loading ||
                     !name ||
                     !phone ||
                     !email ||
@@ -267,7 +319,7 @@ disabled:cursor-not-allowed
 disabled:opacity-50
 "
                 >
-                  Submit Enquiry
+                  {loading ? "Submitting..." : "Submit Enquiry"}
                 </button>
 
               </form>
