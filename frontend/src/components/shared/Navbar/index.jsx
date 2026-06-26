@@ -5,6 +5,7 @@ import logo from "../../../assets/images/home/logo.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Navbar() {
 // TO THIS
 const navLinkClass = `
 relative
-text-2xl
+text-lg xl:text-2xl
 font-semibold
 tracking-wide
 transition-all
@@ -66,7 +67,7 @@ hover:after:w-full
   
 const dropdownItemClass = `
 block
-text-lg
+text-base
 font-medium
 rounded-lg
 px-3
@@ -91,29 +92,147 @@ hover:drop-shadow-[0_0_10px_rgba(240,90,34,0.8)]
           : "bg-transparent"
       }`}
     >
-      <div className="flex h-28 items-center justify-between pl-1 pr-6">
+      <div className="flex h-20 items-center justify-between pl-0 pr-1 md:pl-0 md:pr-1">
 
   {/* Logo */}
-  <Link to="/" className="flex items-center gap-4 -ml-2">
-    <img
-      src={logo}
-      alt="Gandharva School Of Music"
-      className="h-44 w-auto object-contain drop-shadow-2xl"
-    />
+  
 
-    <span
-  style={{ fontFamily: "Cinzel, serif" }}
-  className={`text-5xl font-extrabold tracking-normal leading-tight ${
+<Link to="/" className="flex items-center">
+
+  <img
+  src={logo}
+  alt="Gandharv School Of Music"
+  className="
+    h-21
+    sm:h-25
+    md:h-29
+    lg:h-33
+    w-auto
+    object-contain
+    
+    
+  "
+/>
+
+  <div
+  className={`-ml-8.5 leading-[1.20] ${
     scrolled ? "text-black" : "text-white"
   }`}
 >
-  Gandharv School Of Music
-</span>
-  </Link>
+    <h2
+  style={{ fontFamily: "Cinzel, serif" }}
+  className="
+    text-[13.5px]
+    sm:text-[15.5px]
+    md:text-[17.5px]
+    font-bold
+    uppercase
+    tracking-wide
+    leading-none
+  "
+>
+  GANDHARV
+</h2>
+
+<h2
+  style={{ fontFamily: "Cinzel, serif" }}
+  className="
+    text-[13.5px]
+    sm:text-[15.5px]
+    md:text-[17.5px]
+    font-bold
+    uppercase
+    tracking-wide
+    leading-none
+  "
+>
+  SCHOOL OF
+</h2>
+
+<h2
+  style={{ fontFamily: "Cinzel, serif" }}
+  className="
+    text-[13.5px]
+    sm:text-[15.5px]
+    md:text-[17.5px]
+    font-bold
+    uppercase
+    tracking-wide
+    leading-none
+  "
+>
+  MUSIC
+</h2>
+  </div>
+
+</Link>
+
+
+
+
+
+  <button
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  className={`lg:hidden text-3xl ${
+    scrolled ? "text-black" : "text-white"
+  }`}
+>
+  ☰
+</button>
+
+{mobileMenuOpen && (
+  <div className="absolute right-2 top-full z-50 w-56 rounded-2xl bg-white shadow-2xl lg:hidden">
+    <div className="flex flex-col p-4">
+
+      <Link
+        to="/"
+        onClick={() => setMobileMenuOpen(false)}
+        className="border-b py-3"
+      >
+        Home
+      </Link>
+
+      <Link
+        to="/courses"
+        onClick={() => setMobileMenuOpen(false)}
+        className="border-b py-3"
+      >
+        Courses
+      </Link>
+
+      <Link
+        to="/about"
+        onClick={() => setMobileMenuOpen(false)}
+        className="border-b py-3"
+      >
+        About
+      </Link>
+
+      <Link
+        to="/events"
+        onClick={() => setMobileMenuOpen(false)}
+        className="border-b py-3"
+      >
+        Events
+      </Link>
+
+      <button
+        onClick={() => {
+          setMobileMenuOpen(false);
+          handleEnquiryClick();
+        }}
+        className="py-3 text-left"
+      >
+        Enquiry
+      </button>
+
+    </div>
+  </div>
+)}
 
   {/* Navigation */}
   <div
-    className={`flex items-center gap-8 ${
+  className={`hidden lg:flex items-center gap-8 ${
       scrolled ? "text-black" : "text-white"
     }`}
   >

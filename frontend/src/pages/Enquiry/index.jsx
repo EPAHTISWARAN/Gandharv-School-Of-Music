@@ -1,16 +1,25 @@
-import EnquiryForm from "./EnquiryForm";
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Enquiry() {
-  return(<>
+  const navigate = useNavigate();
 
-  <PageBanner
-  title="Enquiry"
-  subtitle="Begin your musical journey today."
-  />
+  useEffect(() => {
+    navigate("/");
 
-  <EnquiryForm />
+    setTimeout(() => {
+      const section = document.getElementById("enquiry-section");
 
-  </>
-  );
-  
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 300);
+  }, [navigate]);
+
+  return null;
 }
+

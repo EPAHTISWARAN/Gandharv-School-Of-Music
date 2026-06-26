@@ -51,23 +51,23 @@ setCountryCode("+91");
   return (
     <section
       id="enquiry-section"
-      className="py-24 scroll-mt-32"
+      className="py-16 md:py-24 scroll-mt-32"
     >
       <Container>
-        <div className="overflow-hidden rounded-3xl bg-white/90 shadow-2xl backdrop-blur-sm">
+        <div className="overflow-hidden rounded-2xl md:rounded-3xl bg-white/90 shadow-2xl backdrop-blur-sm">
           <div className="grid lg:grid-cols-2">
 
             {/* Left CTA */}
-            <div className="bg-[var(--primary)] p-10 text-white">
+            <div className="bg-[var(--primary)] p-6 md:p-10 text-white">
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider">
                 Get Started
               </p>
 
-              <h2 className="font-heading text-4xl font-bold">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold">
                 Begin Your Musical Journey Today
               </h2>
 
-              <p className="mt-6 text-white/80">
+              <p className="mt-4 text-sm md:text-base text-white/80 leading-relaxed">
                 Learn Vocal Music, Instruments and Dance from experienced
                 faculty through structured training programs.
               </p>
@@ -81,7 +81,7 @@ setCountryCode("+91");
             </div>
 
             {/* Right Form */}
-            <div className="p-10">
+            <div className="p-6 md:p-10">
               <SectionHeading
                 subtitle="Enquiry"
                 title="Book A Free Demo"
@@ -111,11 +111,11 @@ setCountryCode("+91");
                   className="rounded-xl border p-4"
                 />
 
-                <div className="flex gap-3">
+                <div className="flex flex-col md:flex-row gap-3">
   <select
     value={countryCode}
     onChange={(e) => setCountryCode(e.target.value)}
-    className="w-36 rounded-xl border p-4"
+    className="w-full md:w-36 rounded-xl border p-4"
   >
     <option value="+91">🇮🇳 +91</option>
     <option value="+1">🇺🇸 +1</option>
@@ -144,7 +144,7 @@ setCountryCode("+91");
     }
     maxLength={15}
     required
-    className="flex-1 rounded-xl border p-4"
+    className="w-full rounded-xl border p-3 md:p-4"
   />
 </div>
 
@@ -165,7 +165,19 @@ setCountryCode("+91");
                     setSubCourse("");
                   }}
                   required
-                  className="rounded-xl border p-4"
+                  className="
+w-full
+rounded-xl
+bg-[var(--primary)]
+px-6
+py-3
+md:py-4
+text-white
+transition
+hover:opacity-90
+disabled:cursor-not-allowed
+disabled:opacity-50
+"
                 >
                   <option value="">Select Course</option>
                   <option value="singing">Singing</option>
@@ -241,7 +253,19 @@ setCountryCode("+91");
                     !course ||
                     (course && !subCourse)
                   }
-                  className="rounded-xl bg-[var(--primary)] px-6 py-4 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="
+w-full
+rounded-xl
+bg-[var(--primary)]
+px-6
+py-3
+md:py-4
+text-white
+transition
+hover:opacity-90
+disabled:cursor-not-allowed
+disabled:opacity-50
+"
                 >
                   Submit Enquiry
                 </button>
@@ -254,13 +278,30 @@ setCountryCode("+91");
       </Container>
       {showSuccessModal && (
   <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
-    <div className="mx-4 w-full max-w-3xl rounded-3xl bg-white p-12 text-center shadow-2xl">
+    <div className="
+mx-4
+w-full
+max-w-3xl
+rounded-3xl
+bg-white
+p-6
+md:p-12
+text-center
+shadow-2xl
+">
 
-      <h2 className="mb-6 text-5xl font-extrabold text-[var(--primary)]">
+      <h2 className="mb-4 text-2xl md:text-5xl font-extrabold text-[var(--primary)]">
         Enquiry Submitted Successfully!
       </h2>
 
-      <p className="mx-auto max-w-2xl text-xl leading-relaxed text-gray-600">
+      <p className="
+mx-auto
+max-w-2xl
+text-sm
+md:text-xl
+leading-relaxed
+text-gray-600
+">
         Thank you for your interest in Gandharva School of Music.
         We have successfully received your enquiry and our team will
         contact you shortly with course details, batch timings, and
@@ -278,7 +319,25 @@ setCountryCode("+91");
           setSubCourse("");
           setCountryCode("+91");
         }}
-        className="mt-10 rounded-2xl bg-[var(--primary)] px-12 py-4 text-xl font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105"
+        className="
+mt-8
+w-full
+md:w-auto
+rounded-2xl
+bg-[var(--primary)]
+px-8
+md:px-12
+py-3
+md:py-4
+text-base
+md:text-xl
+font-semibold
+text-white
+shadow-lg
+transition-all
+duration-300
+hover:scale-105
+"
       >
         OK
       </button>
